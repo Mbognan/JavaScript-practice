@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todoList</title>
+</head>
+<body>
+  <input placeholder="Enter a name" class="js-name-input"> 
+  <input class="js-date" type="date">
+  <button class="js-button">add</button>
+  <div class="js-todo"></div>
+  
+</body>
+<script> 
+  const todoList = [{
+    name: 'make tutorial',
+    date: '2021-01-01',
+  },{
+    name: 'take out trash',
+    date: '2021-01-02',
+  }];
+  const buttonElement = document.querySelector('.js-button');
+
+  renderTodo();
+ 
+  function renderTodo(){  
+    let todoListElement = '';
+    
+  for(let i = 0; i<todoList.length; i++){
+    const todoObject = todoList[i];
+    const{name,date} = todoObject;
+   
+    const todoPageObject = `<p>${name}  ${date}
+      <button class=" st-delete"  
+      onclick="deleteTodo(${i})"
+        >Delete</button>
+                      </p>`;
+    todoListElement += todoPageObject;
+  }
+  document.querySelector('.js-todo').innerHTML = todoListElement;
+  }
+  function buttonClick(){
+    const inputElement = document.querySelector('.js-name-input');
+    const inputElementDate = document.querySelector('.js-date');
+    const name = inputElement.value;
+    const date = inputElementDate.value;
+    if(name === '' || date === ''){
+      alert('Please enter a name and date');
+      return;
+    }else{
+      todoList.push({
+       name,
+       date
+      });
+      inputElement.value ='';
+      renderTodo();
+
+    }
+ 
+   
+  }
+  function deleteTodo(index){
+    todoList.splice(index, 1);
+    renderTodo();
+  }
+ 
+  buttonElement.addEventListener('click', buttonClick);
+  
+
+  
+  
+  
+
+
+</script>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Document</title>
+</head>
+<body>
+  <p>Youtube Subscribe Button</p>
+  <button class="js-subscribe st-subscribe ">Subscribe</button>
+
+  <p>Amazon Shipping Calculator</p>
+  <p>Order under $40 =  + $10 Shipping Fee</p>
+  <p>Order Over $40 = FREE Shipping</p>
+  <input class="Amount-input" placeholder="Cost of Order" onkeydown="keyDown(event)"> <button class="Calculate st-Calculate">Calculate</button>
+  <p class="total"></p>
+
+  <input placeholder="Enter a word" class="word" onkeyup="wordMaker(event)">
+  <p class="storeWord"></p>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      let input = '';
+      const inputAmount = document.querySelector('.Amount-input');
+      const subscribeButton = document.querySelector('.js-subscribe');
+      const subButton = document.querySelector('.js-subscribe');
+
+
+      function wordMaker(event){
+        input = input + event.key;
+        document.querySelector('.storeWord').innerHTML = input;
+      }
+
+      function keyDown(event) {
+        if (event.key === 'Enter') {
+          calculateTotal();
+        }
+      }
+      
+
+      function calculateTotal() {
+        
+        let cost = parseFloat(inputAmount.value);
+        parseFloat(cost);
+        if (cost < 40) {
+          cost += 10;
+        }
+
+        document.querySelector('.total').innerHTML = `$${cost}`;
+      }
+
+      function sub() {
+   
+        if (subButton.innerText === 'Subscribe') {
+          subButton.innerHTML = 'Subscribed';
+          subButton.classList.add('new-st-subscribe');
+        } else {
+          subButton.innerHTML = 'Subscribe';
+          subButton.classList.remove('new-st-subscribe');
+        }
+      }
+
+
+      const calcu = document.querySelector('.Calculate');
+      if(calcu){
+        calcu.addEventListener('click', calculateTotal);
+      }
+
+     
+      if(subscribeButton){ 
+      subscribeButton.addEventListener('click', sub);
+      }
+    });
+  </script>
+</body>
+</html>

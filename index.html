@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="try.css">
+    <title>Document</title>
+    
+    
+</head>
+<body>
+ <button class="js-gaming st-gaming">Gaming</button>
+ <button class="js-music st-music">Music</button>
+ <button class="js-tech st-tech">Tech</button>
+
+</body>
+<script >
+    document.addEventListener("DOMContentLoaded", function(){
+
+    
+   const gamin = document.querySelector('.js-gaming');
+   const music = document.querySelector('.js-music');
+   const tech = document.querySelector('.js-tech');
+
+    function toggle(){  
+    if(!gamin.classList.contains('js-toggle')){
+        gamin.classList.add('js-toggle');
+        music.classList.remove('js-toggle');
+        tech.classList.remove('js-toggle');
+    }
+    else{
+        gamin.classList.remove('js-toggle');
+    }
+
+    }
+
+
+
+    function toggle2(){
+        if(!music.classList.contains('js-toggle')){
+        music.classList.add('js-toggle');
+        gamin.classList.remove('js-toggle');
+        tech.classList.remove('js-toggle');
+    }else{
+        music.classList.remove('js-toggle');
+    }
+    }
+
+  
+    function toggle3(){
+    if(!tech.classList.contains('js-toggle')){
+        tech.classList.add('js-toggle');
+        gamin.classList.remove('js-toggle');
+        music.classList.remove('js-toggle');
+    }else{
+        tech.classList.remove('js-toggle');
+    }
+}   
+
+
+        gamin.addEventListener('click', toggle);
+ 
+        music.addEventListener('click', toggle2);
+
+        tech.addEventListener('click', toggle3);
+    
+ 
+    
+  
+   
+});
+</script>
+</html>
